@@ -1,8 +1,9 @@
 # leaflet-pmtiles
 
-A toolset to visualise PMTiles more easily in Leaflet.js.
+A toolset to visualise PMTiles more easily in Leaflet.js (based on https://github.com/protomaps/protomaps-leaflet).
 
-Demo : https://kalisio.github.io/leaflet-pmtiles.
+Demos:
+* [OpenMapTiles rendering](https://kalisio.github.io/leaflet-pmtiles/openmapstyle.html)
 
 ## Build
 
