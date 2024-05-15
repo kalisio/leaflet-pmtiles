@@ -5,6 +5,7 @@
   "main": "./src/index.js",
   "type": "module",
   "scripts": {
+    "demo": "nodemon --watch demon --exec 'http-server -p 8080 demo'",
     "dev": "npm run dist && onchange 'src/**/*.*' -- npm run dist",
     "build": "esbuild src/index.js --bundle --target=es2015 --outfile=dist/leaflet-pmtiles.js --global-name=pmtiles",
     "build-min": "esbuild src/index.js --bundle --target=es2015 --minify --outfile=dist/leaflet-pmtiles.min.js --global-name=pmtiles",
@@ -39,6 +40,7 @@
   "homepage": "https://github.com/kalisio/leaflet-pmtiles",
   "devDependencies": {
     "esbuild": "^0.15.11",
+    "nodemon": "^3.1.0",
     "onchange": "^7.1.0",
     "shx": "^0.3.4"
   },
