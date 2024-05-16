@@ -11,7 +11,8 @@ async function run () {
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
   }).addTo(map)
   */
-  class MyBorderSymbolizer {
+  
+  /* class MyBorderSymbolizer {
     draw(context,geom,z,feature) {
         context.fillStyle = "transparent"
         context.beginPath()
@@ -26,7 +27,6 @@ async function run () {
     }
   }
 
-  // k-rclone kalisio copy ovh:kargo/data/MBTIles/osm-boundaries-05-01-2024.mbtiles ~/Projets/leaflet-pmtiles/ --progress
   class MyPlaceSymbolizer {
     place(layout,geom,feature) {
         let pt = geom[0][0]
@@ -51,7 +51,8 @@ async function run () {
         return [{anchor:pt,bboxes:[bbox],draw:draw}]
     }
   }
-  
+  */
+ 
   let LABEL_RULES = [
     /*{
       dataLayer: "level4",
