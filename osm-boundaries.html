@@ -6,12 +6,25 @@
 	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" />
 </head>
 <body>
-	<div id="map" style="position: absolute; top: 0; left:0; bottom:0; right: 0;"></div>
+	<div id="map" style="position: absolute; top: 0; left:0; bottom:0; right: 0;">
+		<h2> <center> Please choose one administrative level: 
+			<select id="selectedLevel">
+				<option value="All">All</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+				<option value="6">6</option>
+				<option value="7">7</option>
+				<option value="8">8</option>
+			</select></center></h2>
+	</div>
 
 	<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
 	<!--script src="https://unpkg.com/protomaps-leaflet@1.24.2/dist/protomaps-leaflet.min.js"></script-->
 	<script src="https://unpkg.com/protomaps-leaflet@latest/dist/protomaps-leaflet.min.js"></script>
 	<script src="leaflet-pmtiles.js"></script>
 	<script src="osm-boundaries.js"></script>
+
 </body>
 </html>
