@@ -19,13 +19,7 @@ async function run () {
       else return "black"
     }
   }
-
-  function dynamicWidth(z, f) {
-    if (f.props.admin_level < 4) return 6
-    if (f.props.admin_level >=4 && f.props.admin_level <6) return 5
-    else return 4
-  }
-
+  
   let paintRules = []
   for (let adminLevel = 2; adminLevel <= 8; adminLevel++){
     paintRules.push(
