@@ -58,7 +58,7 @@ async function run () {
 
   // display the layer by curling the pmtiles file and fitting it with the stylesheet
   let layer = protomapsL.leafletLayer({
-    url:'http://127.0.0.1:8081/contourlines-france.pmtiles',
+    url:'http://127.0.0.1:8081/contourlines.pmtiles',
     paintRules,
     labelRules,
   }).addTo(map)
