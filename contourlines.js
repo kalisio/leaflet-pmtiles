@@ -51,7 +51,11 @@ async function run () {
       dataLayer: "contour",
       symbolizer: new protomapsL.LineLabelSymbolizer({
         labelProps:["height"],
-        }),
+        fill: 'black',
+        width: 2,
+        font: '400 12px sans-serif',
+        stroke: 'red'
+      }),
       filter: (z,f) => { return f.props.nth_line in [5, 10] == true}
     }
   ]
