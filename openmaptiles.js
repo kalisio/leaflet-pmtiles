@@ -24,7 +24,9 @@ async function run () {
     ...rules,
     //debug: true,
     //levelDiff: 2,
-    backgroundColor
+    backgroundColor,
+    maxDataZoom: 14,
+    maxNativeZoom: 18
   })
   layer.addTo(map)
   map.on("click", (ev) => {

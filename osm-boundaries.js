@@ -61,7 +61,7 @@ async function run () {
   }
 
   let layer = protomapsL.leafletLayer({
-    url:'http://127.0.0.1:8081/osm-boundaries-africa.pmtiles',
+    url:'http://127.0.0.1:8081/osm-boundaries.pmtiles',
     paintRules,
     labelRules,
   }).addTo(map)
