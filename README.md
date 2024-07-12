@@ -24,6 +24,18 @@ To run the demos locally:
 
 ## Features
 
+### Mapbox style
+
 The module exposes a `mapbox_style` function generating paint and labels rules from a [Mapbox style is a JSON document ](https://docs.mapbox.com/help/glossary/style/). This is typically useful to render PMTiles created from the [OpenMapTiles profile](https://github.com/openmaptiles/planetiler-openmaptiles).
 
 ![Image](./OpenMapTiles.png)
+
+This feature is based on inital work done by [protomaps-leaflet](https://github.com/protomaps/protomaps-leaflet) contributors (please refer to https://github.com/protomaps/protomaps-leaflet/issues/121 for more details).
+
+### Leaflet path style
+
+**Coming soon**
+
+### Enhanced path style
+
+**Coming soon**
