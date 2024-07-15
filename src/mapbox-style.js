@@ -20,10 +20,17 @@ function number(val, defaultValue) {
   return typeof val === "number" ? val : defaultValue
 }
 
+function getGeomType(f) {
+  if (f.geomType === 1) return 'Point'
+  else if (f.geomType === 2) return 'LineString'
+  else return 'Polygon'
+}
+
 export function filterFn(arr) {
-  // hack around "$type"
   if (arr.includes("$type")) {
-    return (z) => true
+    if (arr[0] === "==") {
+      return (z, f) => getGeomType(f) === arr[2]
+    }
   }
   if (arr[0] === "==") {
     return (z, f) => f.props[arr[1]] === arr[2]
@@ -196,6 +203,10 @@ export function mapbox_style(obj, fontsubmap) {
     if (layer.layout && layer.layout.visibility === "none") {
       continue
     }
+    // ignore background layer as this should be managed by backgroundColor
+    if (layer.type === "background") {
+      continue
+    }
 
     if (layer.ref) {
       const referenced = refs.get(layer.ref)
@@ -213,7 +224,6 @@ export function mapbox_style(obj, fontsubmap) {
       filter = filterFn(layer.filter)
     }
 
-    // ignore background-color?
     if (layer.type === "fill") {
       paint_rules.push({
         dataLayer: layer["source-layer"],
