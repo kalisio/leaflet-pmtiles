@@ -4,12 +4,14 @@
 	<meta charset="UTF-8">
 	<title>leaflet-pmtiles OpenMapTiles demo</title>
 	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" />
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Work+Sans:wght@100..900&family=Petrona:wght@100..900&family=Raleway:wght@100..900" rel="stylesheet">
 </head>
 <body>
 	<div id="map" style="position: absolute; top: 0; left:0; bottom:0; right: 0;">
-		<h2> <center> Please choose one administrative level: 
+	<div id="yoyo">
+		<center><h2>Please select one administrative level: 
 			<select id="selectedLevel">
-				<option value="All">All</option>
+				<option value="None">None</option>
 				<option value="2">2</option>
 				<option value="3">3</option>
 				<option value="4">4</option>
@@ -17,11 +19,23 @@
 				<option value="6">6</option>
 				<option value="7">7</option>
 				<option value="8">8</option>
-			</select></center></h2>
+			</select>
+		a font : 
+			<select id="selectedFont">
+				<option value="Work Sans">Work Sans</option>
+				<option value="Sans-serif">Sans-serif</option>
+				<option value="Serif">Serif</option>
+			</select>
+		and a language : 
+		<select id="selectedLanguage">
+			<option value="Default value">Default value</option>
+			<option value="English">English</option>
+			<option value="French">French</option>
+		</select></h2></center></h2>
+	</div>
 	</div>
 
 	<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
-	<!--script src="https://unpkg.com/protomaps-leaflet@1.24.2/dist/protomaps-leaflet.min.js"></script-->
 	<script src="https://unpkg.com/protomaps-leaflet@latest/dist/protomaps-leaflet.min.js"></script>
 	<script src="leaflet-pmtiles.js"></script>
 	<script src="osm-boundaries.js"></script>
