@@ -4,14 +4,41 @@
 	<meta charset="UTF-8">
 	<title>leaflet-pmtiles OpenMapTiles demo</title>
 	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" />
+	<style>
+        #map1, #map2 {
+            width: 50%;
+            height: 890px;
+            float: left;
+        }
+        .container {
+            display: flex;
+        }
+    </style>
 </head>
 <body>
-	<div id="map" style="position: absolute; top: 0; left:0; bottom:0; right: 0;"></div>
+	<div class="container">
+        <div id="map1"> 
+            <center><h2> Protomaps </h2> </center>
+        </div>
+        <div id="map2">
+            <center><h2> Leaflet </h2> </center>
+        </div>
+        <div id="selection">
+            <center><h2>Please select a geometry type: 
+                <select id="selectedGeometry">
+                    <option value="none">None</option>
+                    <option value="lineStyle">Line</option>
+                    <option value="polygonStyle">Polygon</option>
+                    <option value="pointStyle">Point</option>
+                    <option value="allStyles">All</option>
+                </select>
 
 	<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
 	<!--script src="https://unpkg.com/protomaps-leaflet@1.24.2/dist/protomaps-leaflet.min.js"></script-->
 	<script src="https://unpkg.com/protomaps-leaflet@latest/dist/protomaps-leaflet.min.js"></script>
 	<script src="leaflet-pmtiles.js"></script>
 	<script src="osm-france.js"></script>
+	<script src="http://localhost:8081/features.geojson"></script>
+
 </body>
 </html>
