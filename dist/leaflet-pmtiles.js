@@ -2261,9 +2261,19 @@ var pmtiles = (() => {
   function number(val, defaultValue) {
     return typeof val === "number" ? val : defaultValue;
   }
+  function getGeomType(f) {
+    if (f.geomType === 1)
+      return "Point";
+    else if (f.geomType === 2)
+      return "LineString";
+    else
+      return "Polygon";
+  }
   function filterFn(arr) {
     if (arr.includes("$type")) {
-      return (z) => true;
+      if (arr[0] === "==") {
+        return (z, f) => getGeomType(f) === arr[2];
+      }
     }
     if (arr[0] === "==") {
       return (z, f) => f.props[arr[1]] === arr[2];
@@ -2414,6 +2424,9 @@ var pmtiles = (() => {
     for (const layer of obj.layers) {
       refs.set(layer.id, layer);
       if (layer.layout && layer.layout.visibility === "none") {
+        continue;
+      }
+      if (layer.type === "background") {
         continue;
       }
       if (layer.ref) {
