@@ -37,7 +37,7 @@ This feature is based on inital work done by [protomaps-leaflet](https://github.
 
 ### Leaflet path style
 
-The module exposes a `leaflet_style` function generating paint rules from [Leafet path style options](https://leafletjs.com/reference.html#path) as typically used to visualize GeoJson features in Leaflet. This is typically useful to render similarly PMTiles created from GeoJson datasets. As a PMTiles might contains multiple layers, you need to specify the target layer as the second argument of the style function.
+The module exposes a `leaflet_style` function generating paint rules from [Leafet path style options](https://leafletjs.com/reference.html#path) as used to visualize GeoJson features in Leaflet. This is typically useful to render similarly PMTiles created from GeoJson datasets. As a PMTiles file might contain multiple layers, you need to specify the target layer as the second argument of the style function.
 
 > [!NOTE]
 > Have a look to the related demo for more details.
