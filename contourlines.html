@@ -7,10 +7,11 @@
 </head>
 <body>
 	<div id="map" style="position: absolute; top: 0; left:0; bottom:0; right: 0;">
-		<h2 style="color: black;"> <center> Please enter a minimum limit altitude to highlight: 
+		<h2 style="color: black; position: absolute; z-index: 999;">Please enter a minimum limit altitude to highlight: 
 			<input type='text' id='minimumAltitude' size="5" style="text-align:center;" value="" /> 
 			and a maximum: 
-			<input type='text' id='maximumAltitude' size="5" style="text-align:center;" value="" /> (in meters)</center></h2>
+			<input type='text' id='maximumAltitude' size="5" style="text-align:center;" value="" /> (in meters)
+		</h2>
 	</div>
 		<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
 		<script src="https://unpkg.com/protomaps-leaflet@latest/dist/protomaps-leaflet.js"></script>
