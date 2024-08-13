@@ -1415,11 +1415,23 @@ var pmtiles = (() => {
   __export(src_exports, {
     filterFn: () => filterFn,
     getFont: () => getFont,
+    getGeometryType: () => getGeometryType,
+    leaflet_style: () => leaflet_style,
     mapbox_style: () => mapbox_style,
     numberFn: () => numberFn,
     numberOrFn: () => numberOrFn,
     widthFn: () => widthFn
   });
+
+  // src/utils.js
+  function getGeometryType(f) {
+    if (f.geomType === 1)
+      return "Point";
+    else if (f.geomType === 2)
+      return "LineString";
+    else
+      return "Polygon";
+  }
 
   // node_modules/protomaps-leaflet/dist/frontends/static.js
   var import_point_geometry7 = __toESM(require_point_geometry(), 1);
@@ -2261,18 +2273,10 @@ var pmtiles = (() => {
   function number(val, defaultValue) {
     return typeof val === "number" ? val : defaultValue;
   }
-  function getGeomType(f) {
-    if (f.geomType === 1)
-      return "Point";
-    else if (f.geomType === 2)
-      return "LineString";
-    else
-      return "Polygon";
-  }
   function filterFn(arr) {
     if (arr.includes("$type")) {
       if (arr[0] === "==") {
-        return (z, f) => getGeomType(f) === arr[2];
+        return (z, f) => getGeometryType(f) === arr[2];
       }
     }
     if (arr[0] === "==") {
@@ -2500,7 +2504,8 @@ var pmtiles = (() => {
               width: layer.paint["text-halo-width"],
               stroke: layer.paint["text-halo-color"],
               textTransform: layer.layout["text-transform"],
-              label_props: layer.layout["text-field"] ? [layer.layout["text-field"]] : void 0
+              label_props: layer.layout["text-field"] ? [layer.layout["text-field"]] : void 0,
+              labelProps: layer.layout["text-field"] ? [layer.layout["text-field"]] : void 0
             })
           });
         } else {
@@ -2513,7 +2518,8 @@ var pmtiles = (() => {
               stroke: layer.paint["text-halo-color"],
               width: layer.paint["text-halo-width"],
               textTransform: layer.layout["text-transform"],
-              label_props: layer.layout["text-field"] ? [layer.layout["text-field"]] : void 0
+              label_props: layer.layout["text-field"] ? [layer.layout["text-field"]] : void 0,
+              labelProps: layer.layout["text-field"] ? [layer.layout["text-field"]] : void 0
             })
           });
         }
@@ -2533,6 +2539,85 @@ var pmtiles = (() => {
     }
     label_rules.reverse();
     return { paint_rules, label_rules, paintRules: paint_rules, labelRules: label_rules, tasks: [] };
+  }
+
+  // src/leaflet-style.js
+  function leaflet_style(leafletStyle, layer) {
+    let paint_rules = [];
+    function ifWeight(leafletStyle2) {
+      if (leafletStyle2["stroke"] == false) {
+        return 0;
+      }
+      if (leafletStyle2.hasOwnProperty("weight")) {
+        return leafletStyle2["weight"];
+      } else {
+        return 3;
+      }
+    }
+    function ifColor(leafletStyle2) {
+      if (leafletStyle2.hasOwnProperty("color")) {
+        return leafletStyle2["color"];
+      } else {
+        return "#3388ff";
+      }
+    }
+    function ifOpacity(leafletStyle2) {
+      if (leafletStyle2.hasOwnProperty("opacity")) {
+        return leafletStyle2["opacity"];
+      } else {
+        return 1;
+      }
+    }
+    function ifFill(leafletStyle2) {
+      if (leafletStyle2["fill"] == false) {
+        return "transparent";
+      }
+      if (leafletStyle2.hasOwnProperty("fillColor") == true) {
+        return leafletStyle2["fillColor"];
+      } else {
+        return ifColor(leafletStyle2);
+      }
+    }
+    function ifFillOpacity(leafletStyle2) {
+      if (leafletStyle2.hasOwnProperty("fillOpacity")) {
+        return leafletStyle2["fillOpacity"];
+      } else {
+        return 0.2;
+      }
+    }
+    if (leafletStyle.hasOwnProperty("radius")) {
+      paint_rules.push({
+        dataLayer: layer,
+        filter: (z, f) => f.geomType == 1,
+        symbolizer: new protomapsL.CircleSymbolizer({
+          radius: leafletStyle["radius"],
+          fill: ifFill(leafletStyle),
+          opacity: ifOpacity(leafletStyle),
+          width: ifWeight(leafletStyle),
+          stroke: ifColor(leafletStyle)
+        })
+      });
+    }
+    paint_rules.push({
+      dataLayer: layer,
+      symbolizer: new protomapsL.LineSymbolizer({
+        width: ifWeight(leafletStyle),
+        color: ifColor(leafletStyle),
+        opacity: ifOpacity(leafletStyle),
+        dash: leafletStyle["dashArray"],
+        dashColor: ifColor(leafletStyle),
+        dashWidth: ifWeight(leafletStyle)
+      })
+    });
+    paint_rules.push({
+      dataLayer: layer,
+      filter: (z, f) => f.geomType == 3,
+      symbolizer: new protomapsL.PolygonSymbolizer({
+        fill: ifFill(leafletStyle),
+        opacity: ifFillOpacity(leafletStyle)
+      })
+    });
+    return { paint_rules, paintRules: paint_rules, tasks: [] };
   }
   return __toCommonJS(src_exports);
 })();

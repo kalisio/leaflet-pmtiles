@@ -16,20 +16,16 @@ import {
   PolygonSymbolizer,
   exp } from 'protomaps-leaflet'
 
+import { getGeometryType } from './utils.js'
+
 function number(val, defaultValue) {
   return typeof val === "number" ? val : defaultValue
-}
-
-function getGeomType(f) {
-  if (f.geomType === 1) return 'Point'
-  else if (f.geomType === 2) return 'LineString'
-  else return 'Polygon'
 }
 
 export function filterFn(arr) {
   if (arr.includes("$type")) {
     if (arr[0] === "==") {
-      return (z, f) => getGeomType(f) === arr[2]
+      return (z, f) => getGeometryType(f) === arr[2]
     }
   }
   if (arr[0] === "==") {
@@ -287,6 +283,10 @@ export function mapbox_style(obj, fontsubmap) {
             label_props: layer.layout["text-field"]
               ? [layer.layout["text-field"]]
               : undefined,
+            // Support v1.x as well as v2.x
+            labelProps: layer.layout["text-field"]
+              ? [layer.layout["text-field"]]
+              : undefined,
           }),
         })
       } else {
@@ -300,6 +300,10 @@ export function mapbox_style(obj, fontsubmap) {
             width: layer.paint["text-halo-width"],
             textTransform: layer.layout["text-transform"],
             label_props: layer.layout["text-field"]
+              ? [layer.layout["text-field"]]
+              : undefined,
+            // Support v1.x as well as v2.x
+            labelProps: layer.layout["text-field"]
               ? [layer.layout["text-field"]]
               : undefined,
           }),
