@@ -26,15 +26,21 @@ To run the demos locally:
 
 ### Mapbox style
 
-The module exposes a `mapbox_style` function generating paint and labels rules from a [Mapbox style is a JSON document ](https://docs.mapbox.com/help/glossary/style/). This is typically useful to render PMTiles created from the [OpenMapTiles profile](https://github.com/openmaptiles/planetiler-openmaptiles).
+The module exposes a `mapbox_style` function generating paint and labels rules from a [Mapbox style is a JSON document](https://docs.mapbox.com/help/glossary/style/). This is typically useful to render PMTiles created from the [OpenMapTiles profile](https://github.com/openmaptiles/planetiler-openmaptiles).
 
 ![Image](./OpenMapTiles.png)
+
+> [!NOTE]
+> Have a look to the related demo if you'd like to customize default fonts.
 
 This feature is based on inital work done by [protomaps-leaflet](https://github.com/protomaps/protomaps-leaflet) contributors (please refer to https://github.com/protomaps/protomaps-leaflet/issues/121 for more details).
 
 ### Leaflet path style
 
-**Coming soon**
+The module exposes a `leaflet_style` function generating paint rules from [Leafet path style options](https://leafletjs.com/reference.html#path) as typically used to visualize GeoJson features in Leaflet. This is typically useful to render similarly PMTiles created from GeoJson datasets. As a PMTiles might contains multiple layers, you need to specify the target layer as the second argument of the style function.
+
+> [!NOTE]
+> Have a look to the related demo for more details.
 
 ### Enhanced path style
 
