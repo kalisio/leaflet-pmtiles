@@ -8,35 +8,33 @@
 </head>
 <body>
 	<div id="map" style="position: absolute; top: 0; left:0; bottom:0; right: 0;">
-	<div id="yoyo">
-		<center><h2>Please select one administrative level: 
-			<select id="selectedLevel">
-				<option value="None">None</option>
-				<option value="2">2</option>
-				<option value="3">3</option>
-				<option value="4">4</option>
-				<option value="5">5</option>
-				<option value="6">6</option>
-				<option value="7">7</option>
-				<option value="8">8</option>
-			</select>
-		a font : 
-			<select id="selectedFont">
-				<option value="Work Sans">Work Sans</option>
-				<option value="Sans-serif">Sans-serif</option>
-				<option value="Serif">Serif</option>
-			</select>
-		and a language : 
+	<div style="position: absolute; z-index: 999"><h2>Highlighted level
+		<select id="selectedLevel">
+			<option value="None">None</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+			<option value="5">5</option>
+			<option value="6">6</option>
+			<option value="7">7</option>
+			<option value="8">8</option>
+		</select>
+	Font
+		<select id="selectedFont">
+			<option value="Work Sans">Work Sans</option>
+			<option value="Sans-serif">Sans-serif</option>
+			<option value="Serif">Serif</option>
+		</select>
+	Language 
 		<select id="selectedLanguage">
 			<option value="Default value">Default value</option>
 			<option value="English">English</option>
 			<option value="French">French</option>
-		</select></h2></center></h2>
-	</div>
-	</div>
+		</select>
+	</h2></div>
 
 	<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
-	<script src="https://unpkg.com/protomaps-leaflet@latest/dist/protomaps-leaflet.min.js"></script>
+	<script src="https://unpkg.com/protomaps-leaflet@latest/dist/protomaps-leaflet.js"></script>
 	<script src="leaflet-pmtiles.js"></script>
 	<script src="osm-boundaries.js"></script>
 

@@ -4,13 +4,30 @@
 	<meta charset="UTF-8">
 	<title>leaflet-pmtiles OpenMapTiles demo</title>
 	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" />
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Work+Sans:wght@100..900&family=Petrona:wght@100..900&family=Raleway:wght@100..900" rel="stylesheet">
 </head>
 <body>
-	<div id="map" style="position: absolute; top: 0; left:0; bottom:0; right: 0;"></div>
+	<div id="map" style="position: absolute; top: 0; left:0; bottom:0; right: 0;">
+	</div>
+	<div style="position: absolute; z-index: 999"><h2>
+	Font 
+		<select id="selectedFont">
+			<option value="Inter">Inter</option>
+            <option value="Raleway">Raleway</option>
+            <option value="Work Sans">Work Sans</option>
+            <option value="Manrope">Manrope</option>
+            <option value="Petrona">Petrona</option>
+		</select>
+	Language 
+		<select id="selectedLanguage">
+			<option value="Latin">Latin</option>
+			<option value="English">English</option>
+			<option value="French">French</option>
+		</select>
+	</h2></div>
 
 	<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
-	<!--script src="https://unpkg.com/protomaps-leaflet@1.24.2/dist/protomaps-leaflet.min.js"></script-->
-	<script src="https://unpkg.com/protomaps-leaflet@latest/dist/protomaps-leaflet.min.js"></script>
+	<script src="https://unpkg.com/protomaps-leaflet@latest/dist/protomaps-leaflet.js"></script>
 	<script src="leaflet-pmtiles.js"></script>
 	<script src="openmaptiles.js"></script>
 </body>

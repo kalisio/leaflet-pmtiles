@@ -26,19 +26,19 @@
         <div id="selection">
             <center><h2>Please select a geometry type: 
                 <select id="selectedGeometry">
-                    <option value="none">None</option>
-                    <option value="lineStyle">Line</option>
-                    <option value="polygonStyle">Polygon</option>
-                    <option value="pointStyle">Point</option>
-                    <option value="allStyles">All</option>
+                    <option value="None">None</option>
+                    <option value="Point">Point</option>
+                    <option value="LineString">LineString</option>
+                    <option value="Polygon">Polygon</option>
+                    <option value="Any">Any</option>
                 </select>
-
+             </h2> </center>
+         </div>
+    </div>
 	<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
-	<!--script src="https://unpkg.com/protomaps-leaflet@1.24.2/dist/protomaps-leaflet.min.js"></script-->
-	<script src="https://unpkg.com/protomaps-leaflet@latest/dist/protomaps-leaflet.min.js"></script>
+	<script src="https://unpkg.com/protomaps-leaflet@latest/dist/protomaps-leaflet.js"></script>
 	<script src="leaflet-pmtiles.js"></script>
-	<script src="osm-france.js"></script>
-	<script src="http://localhost:8081/features.geojson"></script>
+	<script src="leaflet-geojson.js"></script>
 
 </body>
 </html>
