@@ -2566,6 +2566,14 @@ function leaflet_style(leafletStyle, layer) {
       return 0.2;
     }
   }
+  function ifLineCap(leafletStyle2) {
+    if (leafletStyle2.hasOwnProperty("lineCap")) {
+      return leafletStyle2["lineCap"];
+    } else {
+      return "round";
+    }
+  }
+  const ifLineJoin = ifLineCap;
   if (leafletStyle.hasOwnProperty("radius")) {
     paint_rules.push({
       dataLayer: layer,
@@ -2585,7 +2593,9 @@ function leaflet_style(leafletStyle, layer) {
       width: ifWeight(leafletStyle),
       color: ifColor(leafletStyle),
       opacity: ifOpacity(leafletStyle),
-      dash: leafletStyle["dashArray"],
+      lineCap: ifLineCap(leafletStyle),
+      lineJoin: ifLineJoin(leafletStyle),
+      dash: typeof leafletStyle["dashArray"] === "string" ? leafletStyle["dashArray"].split(" ").map(parseFloat) : leafletStyle["dashArray"],
       dashColor: ifColor(leafletStyle),
       dashWidth: ifWeight(leafletStyle)
     })

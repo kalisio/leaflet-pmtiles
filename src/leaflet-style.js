@@ -55,6 +55,17 @@ export function leaflet_style(leafletStyle, layer) {
       return 0.2	
     }
   }
+
+  // Manage cap/join default value
+  function ifLineCap(leafletStyle) {
+    if (leafletStyle.hasOwnProperty('lineCap')) {
+      return leafletStyle['lineCap']
+    }
+    else {
+      return 'round'
+    }
+  }
+  const ifLineJoin = ifLineCap
   
   // Define paint rules for point features
   if (leafletStyle.hasOwnProperty('radius')) {
@@ -78,7 +89,9 @@ export function leaflet_style(leafletStyle, layer) {
       width: ifWeight(leafletStyle),
       color: ifColor(leafletStyle),
       opacity: ifOpacity(leafletStyle),
-      dash: leafletStyle['dashArray'],
+      lineCap: ifLineCap(leafletStyle),
+      lineJoin: ifLineJoin(leafletStyle),
+      dash: (typeof leafletStyle['dashArray'] === 'string' ? leafletStyle['dashArray'].split(' ').map(parseFloat) : leafletStyle['dashArray']),
       dashColor: ifColor(leafletStyle),
       dashWidth: ifWeight(leafletStyle)
     })

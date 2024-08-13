@@ -29,7 +29,7 @@ async function run () {
       color: 'green',
       weight: 4,
       opacity: 1,
-      dashArray: [2,8],
+      dashArray: '4 8',
       dashWidth: 2
     },
     Polygon: {
@@ -47,7 +47,7 @@ async function run () {
       color: 'green',
       weight: 4,
       opacity: 1,
-      dashArray: [2,8],
+      dashArray: '2 8',
       dashWidth: 2
     }
   }
