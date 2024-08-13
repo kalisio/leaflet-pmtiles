@@ -48,10 +48,11 @@ async function run () {
     })
   }
   function updateStyleLanguage() {
-    // Default value is Latin
-    let field = 'name:latin'
+    // Default value
+    let field = 'name'
     if (document.getElementById('selectedLanguage').value == 'English') field = 'name:en'
     else if (document.getElementById('selectedLanguage').value == 'French') field = 'name:fr'
+    else if (document.getElementById('selectedLanguage').value == 'Latin') field = 'name:latin'
 
     style.layers.forEach(layer => {
       if (layer.layout && layer.layout['text-field']) {
