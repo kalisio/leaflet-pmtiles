@@ -3,3 +3,4 @@ node_modules
 *.scssc
 demo/leaflet-pmtiles*
 *.pmtiles
+contourlines
