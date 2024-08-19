@@ -24,10 +24,6 @@ To run the demos locally:
 
 ## Features
 
-### Convert geojson to pmtiles
-To convert geojson file to pmtiles file, we use **tippecanoe** library, with the following command line : `tippecanoe -z15 -Z2 -rg --projection=EPSG:4326 -o output-file.pmtiles -l layer input-file.geojson -f`. You can manage minimum zoom of the feature display with `-Z` parameter, maximum zoom of the feature display with `-z` and rate of the feature display with `-r`. For further information, please check the [tippecanoe documentation](https://github.com/mapbox/tippecanoe?tab=readme-ov-file).
-
-
 ### Mapbox style
 
 The module exposes a `mapbox_style` function generating paint and labels rules from a [Mapbox style is a JSON document](https://docs.mapbox.com/help/glossary/style/). This is typically useful to render PMTiles created from the [OpenMapTiles profile](https://github.com/openmaptiles/planetiler-openmaptiles).
@@ -45,6 +41,10 @@ The module exposes a `leaflet_style` function generating paint rules from [Leafe
 
 > [!NOTE]
 > Have a look to the related demo for more details.
+
+#### Convert GeoJson to PMTiles
+
+To convert the demonstration GeoJson file to PMTiles file we used **tippecanoe** library with the following command line: `tippecanoe -z15 -Z2 -rg --projection=EPSG:4326 -o output-file.pmtiles -l layer input-file.geojson -f`. You can manage minimum zoom of the feature display with `-Z` parameter, maximum zoom of the feature display with `-z` and rate of the feature display with `-r`. For further information, please check the [tippecanoe documentation](https://github.com/mapbox/tippecanoe?tab=readme-ov-file).
 
 ### Enhanced path style
 
