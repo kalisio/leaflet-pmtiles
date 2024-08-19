@@ -76,7 +76,7 @@ async function run () {
   function update() {
     const selectedGeometry = document.getElementById('selectedGeometry').value
     // Style and filter according to displayed geometry type
-    layer.paintRules = (selectedGeometry !== 'None' ? pmtiles.leaflet_style(Styles[selectedGeometry], 'features').paintRules : [])
+    layer.paintRules = (selectedGeometry !== 'None' ? pmtiles.leaflet_style(Styles[selectedGeometry], 'layer').paintRules : [])
     layer.paintRules = layer.paintRules.map(rule => {
       const originalFilter = rule.filter
       return Object.assign({}, rule, { filter: (z,f) => (selectedGeometry !== 'Any' ? selectedGeometry === pmtiles.getGeometryType(f) : originalFilter ? originalFilter(z,f) : true) })
