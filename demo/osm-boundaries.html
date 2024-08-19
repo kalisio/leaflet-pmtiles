@@ -6,9 +6,23 @@
 	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" />
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Work+Sans:wght@100..900&family=Petrona:wght@100..900&family=Raleway:wght@100..900" rel="stylesheet">
 </head>
+<style> 
+	#map {
+		width: 100%;
+		height: 950px;
+		float: top;
+	}
+	#navabar{
+		height: 50px;
+		float: top
+	}
+	.container {
+		display: flex;
+	}
+</style>
 <body>
-	<div id="map" style="position: absolute; top: 0; left:0; bottom:0; right: 0;">
-	<div style="position: absolute; z-index: 999"><h2>Highlighted level
+	<div id="navbar">
+	<h2 style="color: black;"> <center> Highlighted level
 		<select id="selectedLevel">
 			<option value="None">None</option>
 			<option value="2">2</option>
@@ -31,8 +45,8 @@
 			<option value="English">English</option>
 			<option value="French">French</option>
 		</select>
-	</h2></div>
-
+	</center></h2></div>
+	<div id="map"></div>
 	<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
 	<script src="https://unpkg.com/protomaps-leaflet@latest/dist/protomaps-leaflet.js"></script>
 	<script src="leaflet-pmtiles.js"></script>
