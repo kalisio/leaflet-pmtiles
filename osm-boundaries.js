@@ -5,6 +5,9 @@ async function run () {
     zoomControl: false,
     fullscreenControl: true
   })
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors'
+  }).addTo(map)
 
   // function to adapt boundaries color regarding the admin_level
   function dynamicColor(z, f) {

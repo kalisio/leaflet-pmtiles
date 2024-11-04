@@ -7,6 +7,9 @@ async function run () {
     zoomControl: false,
     fullscreenControl: true
   })
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors'
+  }).addTo(map)
   
   // define function for a dynamic color rendering according entered altitude
   function dynamicColor(z, f) {
@@ -29,7 +32,7 @@ async function run () {
       dataLayer: "contour",
       symbolizer: new protomapsL.LineSymbolizer({
         color: dynamicColor,
-        width: 1.1,
+        width: 2.5,
         opacity: 0.4,
       }),
       filter: (z,f) => { return f.props.height > 0 && f.props.nth_line in [5, 10] == true}
@@ -38,8 +41,8 @@ async function run () {
       dataLayer: "contour",
       symbolizer: new protomapsL.LineSymbolizer({
         color: dynamicColor,
-        width: 0.6,
-        opacity: 0.3,
+        width: 1.5,
+        opacity: 0.4,
       }),
       filter: (z,f) => { return f.props.height > 0 && f.props.nth_line in [5, 10] == false}
     },
