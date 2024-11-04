@@ -2,7 +2,3 @@ node_modules
 .sass-cache
 *.scssc
 demo/leaflet-pmtiles*
-*.pmtiles
-contourlines
-pmtiles
-*.mbtiles
