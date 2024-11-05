@@ -26,9 +26,9 @@ async function run () {
 
   // function to adapt toponyms font regarding the admin_level
   function dynamicFont(z,f) {
-    if (f.props.admin_level == 2) return "100 24px " + document.getElementById("selectedFont").value
-    else if (f.props.admin_level == 3) return "400 28px " + document.getElementById("selectedFont").value
-    else if (f.props.admin_level == 4) return "900 32px " + document.getElementById("selectedFont").value
+    if (f.props.admin_level == 2) return "100 18px " + document.getElementById("selectedFont").value
+    else if (f.props.admin_level == 3) return "400 16px " + document.getElementById("selectedFont").value
+    else if (f.props.admin_level == 4) return "900 14px " + document.getElementById("selectedFont").value
     return "400 12px " + document.getElementById("selectedFont").value
   }
 
@@ -47,7 +47,7 @@ async function run () {
         dataLayer: "level"+adminLevel,
         symbolizer: new protomapsL.LineSymbolizer({
           color: "black",
-          width: 6,
+          width: 3,
           opacity: 1,
         })
       },
@@ -55,7 +55,7 @@ async function run () {
         dataLayer: "level"+adminLevel,
         symbolizer: new protomapsL.LineSymbolizer({
           opacity: 1,
-          width: 4,
+          width: 2,
           dashWidth: 2,
           color: dynamicColor,
           dashColor: dynamicColor,
@@ -72,8 +72,8 @@ async function run () {
       dataLayer: "level"+adminLevel+"toponyms",
       symbolizer: new protomapsL.CenteredTextSymbolizer({
         labelProps: dynamicLanguage,
-        fill:"white",
-        width: 2,
+        fill: "white",
+        width: 1,
         stroke: dynamicColor,
         font: dynamicFont
       })
