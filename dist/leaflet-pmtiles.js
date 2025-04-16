@@ -2444,7 +2444,18 @@ var pmtiles = (() => {
       let symbolizer;
       let filter = void 0;
       if (layer.filter) {
-        filter = filterFn(layer.filter);
+        if (layer.minzoom || layer.maxzoom) {
+          const fn = filterFn(layer.filter);
+          filter = (z, f) => {
+            if (layer.minzoom && z < layer.minzoom)
+              return false;
+            if (layer.maxzoom && z > layer.maxzoom)
+              return false;
+            return fn(z, f);
+          };
+        } else {
+          filter = filterFn(layer.filter);
+        }
       }
       if (layer.type === "fill") {
         paint_rules.push({
