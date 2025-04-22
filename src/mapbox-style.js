@@ -235,7 +235,9 @@ export function mapbox_style(obj, fontsubmap) {
         filter: filter,
         symbolizer: new PolygonSymbolizer({
           fill: layer.paint["fill-color"],
-          opacity: numberOrFn(layer.paint["fill-opacity"], 1)
+          opacity: numberOrFn(layer.paint["fill-opacity"], 1),
+          stroke: layer.paint["fill-outline-color"],
+          width: numberOrFn(layer.paint["fill-outline-width"], 1)
         }),
       })
     } else if (layer.type === "fill-extrusion") {
