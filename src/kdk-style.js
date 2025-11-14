@@ -12,15 +12,21 @@ function dashArrayToCanvasDash(dashArray) {
   return dash.map((value) => parseFloat(value))
 }
 
-export function kdk_style(style, dataLayer)
-{
+export function kdk_style(style, dataLayer) {
   const paintRules = [] // { id, minzoom, maxzoom, dataSource, dataLayer, symbolizer, filter }
   // filter(z, feature)
 
+  // For each rule, we add a kdkFilter member so that users that would like
+  // to update the filter can still reference the kdk style specific filter bit.
+
   if (style.line) {
+    // Will only apply to line geometry
+    const kdkFilterFn = (zoom, feature) => feature.geomType === 2
+
     paintRules.push({
       dataLayer: dataLayer,
-      filter: (z, feature) => feature.geomType === 2,
+      kdkFilter: kdkFilterFn,
+      filter: kdkFilterFn,
       symbolizer: new LineSymbolizer({
         color: style.line.color,
         width: style.line.width,
@@ -37,9 +43,13 @@ export function kdk_style(style, dataLayer)
   }
 
   if (style.polygon) {
+    // Will only apply to polygon geometry
+    const kdkFilterFn = (zoom, feature) => feature.geomType === 3
+
     paintRules.push({
       dataLayer: dataLayer,
-      filter: (z, feature) => feature.geomType === 3,
+      kdkFilter: kdkFilterFn,
+      filter: kdkFilterFn,
       symbolizer: new PolygonSymbolizer({
         // pattern: ,
         fill: style.polygon.color,
@@ -53,7 +63,8 @@ export function kdk_style(style, dataLayer)
     if (style.polygon.stroke) {
       paintRules.push({
         dataLayer: dataLayer,
-        filter: (z, feature) => feature.geomType === 3,
+        kdkFilter: kdkFilterFn,
+        filter: kdkFilterFn,
         symbolizer: new LineSymbolizer({
           color: style.polygon.stroke.color,
           width: style.polygon.stroke.width,
@@ -70,5 +81,5 @@ export function kdk_style(style, dataLayer)
     }
   }
   
-  return { paint_rules: paintRules, paintRules }
+  return { paintRules }
 }
