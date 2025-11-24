@@ -9,7 +9,7 @@ function dashArrayToCanvasDash(dashArray) {
   // from dashArray expressed in percentages
   // Target dash is expressed in canvas units
   let dash = dashArray ? dashArray.split(/ |,/) : []
-  return dash.map((value) => parseFloat(value))
+  return dash.length ? dash.map((value) => parseFloat(value)) : null
 }
 
 export function kdk_style(style, dataLayer) {
@@ -55,7 +55,7 @@ export function kdk_style(style, dataLayer) {
         fill: style.polygon.color,
         opacity: style.polygon.opacity,
         // stroke: ,
-        // width: ,
+        width: 0,
         // perFeature:
       })
     })
